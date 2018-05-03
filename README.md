@@ -10,7 +10,7 @@ and multiple views
 - grid-calendar
 - input-datepicker etc.
 
-![alt text](https://github.com/marikv/vue-mini-calendar/blob/master/example/static/vue-mini-calendar.png)
+![alt text](https://github.com/marikv/vue-mini-calendar/blob/master/example/static/vue-mini-calendar.png?raw=true)
 ## License
 
 [MIT](LICENSE)

@@ -1,7 +1,7 @@
 {
   "name": "vue-mini-calendar",
   "description": "a simple and multifunctional vue datepicker calendar with simple, multiple and range modes",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "author": "MARIK-PC\\marik <marin.vartan@gmail.com>",
   "license": "MIT",
   "keywords": [
