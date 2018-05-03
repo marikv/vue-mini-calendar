@@ -3,10 +3,4 @@
 
 import vueMiniCalendar from './vueMiniCalendar';
 
-export default {
-    install (Vue) {
-        Vue.component('vueMiniCalendar', vueMiniCalendar);
-    }
-}
-
-export { vueMiniCalendar }
+export default vueMiniCalendar
