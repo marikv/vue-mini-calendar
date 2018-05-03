@@ -1,7 +1,7 @@
 {
   "name": "vue-mini-calendar",
   "description": "a simple and multifunctional vue datepicker calendar with simple, multiple and range modes",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "MARIK-PC\\marik <marin.vartan@gmail.com>",
   "license": "MIT",
   "keywords": [
@@ -14,7 +14,7 @@
     "vue-range-calendar",
     "vue-multiple-calendar"
   ],
-  "main": "./dist/index.js",
+  "main": "./src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marikv/vue-mini-calendar.git"
