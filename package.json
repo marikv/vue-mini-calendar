@@ -1,7 +1,9 @@
 {
   "name": "vue-mini-calendar",
-  "version": "0.0.2",
   "description": "a simple and multifunctional vue datepicker calendar with simple, multiple and range modes",
+  "version": "0.0.3",
+  "author": "MARIK-PC\\marik <marin.vartan@gmail.com>",
+  "license": "MIT",
   "keywords": [
     "vue",
     "datepicker",
@@ -19,7 +21,7 @@
   },
   "author": "Marin Vartan <marin.vartan@gmail.com>",
   "homepage": "https://github.com/marikv/vue-mini-calendar#readme",
-  "license": "MIT",
+  "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"

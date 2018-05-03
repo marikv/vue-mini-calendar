@@ -1,3 +1,3 @@
-var vueMiniCalendar = require('./vue-mini-calendar')
+var vueMiniCalendar = require('./vueMiniCalendar')
 
 module.exports = vueMiniCalendar
