@@ -1,5 +1,5 @@
 # vue-mini-calendar
-
+![alt text](https://github.com/marikv/vue-mini-calendar/blob/master/example/static/vue-mini-calendar.png)
 ## License
 
 [MIT](LICENSE)
