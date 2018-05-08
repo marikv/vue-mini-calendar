@@ -1,6 +1,6 @@
 # vue-mini-calendar-demo
 
-> just a demo site for vue-mini-calendar component for VueJs
+> just a demo
 
 ## Build Setup
 
@@ -13,9 +13,6 @@ npm run dev
 
 # build for production with minification
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).

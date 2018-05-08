@@ -1,5 +1,7 @@
 # vue-mini-calendar
 
+[DEMO http://vue-mini-calendar.vartan.md/](http://vue-mini-calendar.vartan.md/)
+
 whith multiple modes: 
 * simple
 * multiple

@@ -8,12 +8,12 @@
         </div>
         <div class="sidebar">
             <h4>Mode</h4>
-            <div class="option" v-for="option in selectModeOptions">
+            <div :key="option.id" class="option" v-for="option in selectModeOptions">
                 <input type="radio" :id="option.id" :value="option.value" v-model="config.mode" />
                 <label :for="option.id">{{ option.label }}</label>
             </div>
             <h4>Show</h4>
-            <div class="option" v-for="option in showOptions">
+            <div :key="option.id" class="option" v-for="option in showOptions">
                 <input type="radio" :id="option.id" :value="option.id" v-model="config.show" />
                 <label :for="option.id">{{ option.label }}</label>
             </div>
@@ -30,11 +30,43 @@
       <hr>
 
       <h1>Usage</h1>
+      <pre class="pre">
+&lt;template&gt;
+    &lt;div&gt;
+        &lt;vueMiniCalendar v-model="date" :config="config"/&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import vueMiniCalendar from 'vue-mini-calendar'
+
+    export default {
+      components: {
+        vueMiniCalendar
+      },
+      data () {
+        return {
+          date: new Date(),
+          config: {
+            mode: '{{config.mode}}',
+            rangeSeparator: ' — ',
+            multipleSeparator: ', ',
+            format: 'MM/dd/yyyy',
+            firstDayOfWeek: 1,
+            weekDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+            months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            show: '{{config.show}}'
+          }
+        }
+      }
+    }
+&lt;/script&gt;
+      </pre>
   </div>
 </template>
 
 <script>
-import vueMiniCalendar from './components/vueMiniCalendar'
+import vueMiniCalendar from 'vue-mini-calendar'
 
 export default {
   name: 'App',
@@ -69,6 +101,28 @@ export default {
     }
   },
   computed: {
+    configMode() {
+      return this.config.mode;
+    },
+    configShow() {
+      return this.config.show;
+    }
+  },
+  methods: {
+    showPre() {
+      document.getElementsByClassName('pre')[0].classList.remove('pre-view');
+      setTimeout(() => {
+        document.getElementsByClassName('pre')[0].classList.add('pre-view');
+      }, 500);
+    }
+  },
+  watch: {
+    configMode() {
+      this.showPre();
+    },
+    configShow() {
+      this.showPre();
+    }
   }
 }
 </script>
@@ -83,18 +137,47 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-  .center {
+.pre {
+    text-align: left;
+    max-width: 600px;
+    margin:auto;
+    background: rgba(200,200,200,0.16);
+    overflow: auto;
+    padding: 10px 20px;
+    border: 1px solid rgba(220,220,220,0.46);
+    border-radius: 4px;
+}
+@keyframes pre-view {
+    from {
+        background-color: rgba(200,200,200,0.16);
+        border: 1px solid rgba(220,220,220,0.46);
+    }
+    to {
+        background-color: rgba(253, 32, 107, 0.16);
+        border: 1px solid rgba(253, 32, 107, 0.49);
+    }
+}
+.pre-view {
+    background-color: rgba(200,200,200,0.16);
+    border: 1px solid rgba(220,220,220,0.46);
+    animation-name: pre-view;
+    animation-duration: .5s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+.center {
     text-align: center;
     display: flex;
     align-items: baseline;
     justify-content: center;
-  }
-    .sidebar {
-        width: 300px;
-        min-width: 300px;
-        max-width: 300px;
-        text-align: left;
-        padding-left: 30px;
-        vertical-align: top;
-    }
+}
+.sidebar {
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+    text-align: left;
+    padding-left: 30px;
+    vertical-align: top;
+}
 </style>
