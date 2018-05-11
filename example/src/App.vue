@@ -7,22 +7,38 @@
           <vueMiniCalendar v-model="dateModel" :config="config"/>
         </div>
         <div class="sidebar">
-            <h4>Mode</h4>
-            <div :key="option.id" class="option" v-for="option in selectModeOptions">
-                <input type="radio" :id="option.id" :value="option.value" v-model="config.mode" />
-                <label :for="option.id">{{ option.label }}</label>
+            <div style="width: 50%">
+                <h4>Mode</h4>
+                <div :key="option.id" class="option" v-for="option in selectModeOptions">
+                    <input type="radio" :id="option.id" :value="option.value" v-model="config.mode" />
+                    <label :for="option.id">{{ option.label }}</label>
+                </div>
             </div>
-            <h4>Show</h4>
-            <div :key="option.id" class="option" v-for="option in showOptions">
-                <input type="radio" :id="option.id" :value="option.id" v-model="config.show" />
-                <label :for="option.id">{{ option.label }}</label>
+            <div style="width: 50%">
+                <h4>Show</h4>
+                <div :key="option.id" class="option" v-for="option in showOptions">
+                    <input type="radio" :id="option.id" :value="option.id" v-model="config.show" />
+                    <label :for="option.id">{{ option.label }}</label>
+                </div>
             </div>
-            <h4>Value</h4>
-            <div v-if="dateModel">
-                {{ dateModel }}
+            <div style="width: 50%">
+                <h4>Format</h4>
+                <div class="option" v-for="option in selectFormatOptions">
+                    <input type="radio" :id="option" :value="option" v-model="config.format" />
+                    <label :for="option">{{ option }}</label>
+                </div>
             </div>
-            <div v-else>
-                None
+            <div style="width: 50%">
+
+            </div>
+            <div style="width: 100%">
+                <h4>Value</h4>
+                <div v-if="dateModel">
+                    {{ dateModel }}
+                </div>
+                <div v-else>
+                    None
+                </div>
             </div>
         </div>
     </div>
@@ -51,7 +67,7 @@
             mode: '{{config.mode}}',
             rangeSeparator: ' — ',
             multipleSeparator: ', ',
-            format: 'MM/dd/yyyy',
+            format: '{{config.format}}',
             firstDayOfWeek: 1,
             weekDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
             months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -66,7 +82,7 @@
 </template>
 
 <script>
-import vueMiniCalendar from 'vue-mini-calendar'
+import vueMiniCalendar from './components/vueMiniCalendar'
 
 export default {
   name: 'App',
@@ -75,7 +91,7 @@ export default {
   },
   data () {
     return {
-      dateModel: new Date(), // '23.04.2018' or '05/23/2018' or new Date() ....
+      dateModel: '24.06.2018 — 26.06.2018', // '23.04.2018' or '05/23/2018' or new Date() ....
       mode: 'single',
       selectModeOptions: [
         { id: 'none', value: 'none', label: 'None' },
@@ -88,11 +104,12 @@ export default {
         { id: 'inline', label: 'inline' },
         { id: 'calendar', label: 'calendar' }
       ],
+      selectFormatOptions: ['MM/dd/yyyy', 'dd.MM.yyyy', 'yyyy-MM-dd' ],
       config: {
-        mode: 'single', // multiple, single, range, none
+        mode: 'range', // multiple, single, range, none
         rangeSeparator: ' — ',
         multipleSeparator: ', ',
-        format: 'MM/dd/yyyy', // 'MM/dd/yyyy',
+        format: 'dd.MM.yyyy', // 'MM/dd/yyyy',
         firstDayOfWeek: 1, // 1 = Sunday ... 7 = Monday
         weekDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -106,6 +123,9 @@ export default {
     },
     configShow() {
       return this.config.show;
+    },
+    configFormat() {
+      return this.config.format;
     }
   },
   methods: {
@@ -121,6 +141,9 @@ export default {
       this.showPre();
     },
     configShow() {
+      this.showPre();
+    },
+    configFormat() {
       this.showPre();
     }
   }
@@ -179,5 +202,7 @@ export default {
     text-align: left;
     padding-left: 30px;
     vertical-align: top;
+    display: flex;
+    flex-wrap: wrap;
 }
 </style>
